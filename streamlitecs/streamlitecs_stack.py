@@ -37,7 +37,7 @@ class StreamlitecsStack(Stack):
             cpu=512,                    # Default is 256
             desired_count=1,            # Default is 1
             task_image_options=ecs_patterns.ApplicationLoadBalancedTaskImageOptions(
-                image=ecs.ContainerImage.from_registry("public.ecr.aws/s1y0q4w4/streamlittesting:latest")),
+                image=ecs.ContainerImage.from_registry("public.ecr.aws/m2l6b1f0/streamlitecs:latest")),
             memory_limit_mib=2048,      # Default is 512
             public_load_balancer=True)  # Default is True
         
@@ -67,6 +67,8 @@ class StreamlitecsStack(Stack):
             ]
         )
         
-        CfnOutput(self, id="CFurl", value=distribution.distribution_domain_name, export_name="CFdistribution")
+        url = "https://"+distribution.distribution_domain_name
+        
+        CfnOutput(self, id="CFurl", value=url, export_name="CFdistribution")
         
      
