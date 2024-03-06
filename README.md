@@ -29,7 +29,9 @@ docker run -p 80:80 streamlit
 3. Push the image to a container repository. You can find a guide on how to create and push images to public ECR repository here:
 https://docs.aws.amazon.com/AmazonECR/latest/public/public-repository-create.html
 
-4. Update the container image repository URL on line 38 in `streamlitecs/streamlitecs_stack.py` 
+Alternatively you can use the pre-defined repository, but keep in mind this may contain an outdated image. It's recommended that you build your own container image.
+
+5. Update the container image repository URL on line 38 in `streamlitecs/streamlitecs_stack.py` 
 
 ### Prepare and run the CDK app
 
