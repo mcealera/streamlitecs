@@ -1,7 +1,7 @@
 
 ## Streamlit on ECS 
 
-This is a simple project showcasing Streamlit on ECS using CDK dployment with Python.
+This is a simple project showcasing Streamlit (https://streamlit.io/) on ECS using CDK dployment with Python.
 It contains the Dockerfile required to build the container image and the CDK code to deploy the code on AWS. 
 The CDK will create the ECS cluster, an Application Loadbalancer and a CloudFront distribution.
 
@@ -42,7 +42,7 @@ directory.  To create the virtualenv it assumes that there is a `python3`
 package. If for any reason the automatic creation of the virtualenv fails,
 you can create the virtualenv manually.
 
-1. To manually create a virtualenv on MacOS and Linux:
+1. To manually create a virtualenv on MacOS and Linux, navigate to the projects root directory and run:
 
 ```
 $ python3 -m venv .venv
@@ -77,11 +77,14 @@ To add additional dependencies, for example other CDK libraries, just add
 them to your `setup.py` file and rerun the `pip install -r requirements.txt`
 command.
 
-5. You can now deploy the CloudFormation template for this code.
+5. You can now deploy the CloudFormation template for this code. You will need to have valid AWS profile configured - see 
 
 ```
 $ cdk deploy
 ```
+Note that you will need a valid AWS cli profile. If you need to configure a profile, follow the instructions here:
+https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html
+
 6. To delete all resources provisoned use:
 
 ```

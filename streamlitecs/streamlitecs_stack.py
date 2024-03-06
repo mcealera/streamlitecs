@@ -1,6 +1,7 @@
 from aws_cdk import (
     # Duration,
     Stack,
+    CfnOutput,
     aws_ec2 as ec2, 
     aws_ecs as ecs,
     aws_cloudfront as cloudfront,
@@ -10,7 +11,7 @@ from aws_cdk import (
 )
 from constructs import Construct
 
-class Streamlitecstack(Stack):
+class StreamlitecsStack(Stack):
 
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
@@ -27,10 +28,10 @@ class Streamlitecstack(Stack):
 
         security_group.add_ingress_rule(
             ec2.Peer.prefix_list('pl-3b927c52'),  # Replace 'pl-xxxxxx' with your prefix list ID
+            ec2.Port.all_traffic(),
             "Allow CloudFront traffic"
         )
 
-        
         app = ecs_patterns.ApplicationLoadBalancedFargateService(self, "MyFargateService",
             cluster=cluster,            # Required
             cpu=512,                    # Default is 256
@@ -41,18 +42,7 @@ class Streamlitecstack(Stack):
             public_load_balancer=True)  # Default is True
         
         app.load_balancer.add_security_group(security_group)
-        
-        app.task_definition.task_role.add_to_policy(
-            iam.PolicyStatement(
-                effect=iam.Effect.ALLOW,
-                actions=[
-                    "bedrock:InvokeModel"
-                ],
-                resources=["*"]  
-            )
-        )
-        
-            
+
         distribution = cloudfront.CloudFrontWebDistribution(
             self, "MyCloudFrontDistribution",
             origin_configs=[
@@ -76,5 +66,7 @@ class Streamlitecstack(Stack):
                 )
             ]
         )
+        
+        CfnOutput(self, id="CFurl", value=distribution.distribution_domain_name, export_name="CFdistribution")
         
      
