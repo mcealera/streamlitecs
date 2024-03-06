@@ -29,11 +29,14 @@ docker run -p 80:80 streamlit
 3. Push the image to a container repository. You can find a guide on how to create and push images to public ECR repository here:
 https://docs.aws.amazon.com/AmazonECR/latest/public/public-repository-create.html
 
-4. Update the container image repository URL on line 38 in `streamlitecs/streamlitecs_stack.py` 
+Alternatively you can use the pre-defined repository, but keep in mind this may contain an outdated image. It's recommended that you build your own container image.
+
+5. Update the container image repository URL on line 40 in `streamlitecs/streamlitecs_stack.py` 
 
 ### Prepare and run the CDK app
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+Note that you will need a valid AWS cli profile. If you need to configure a profile, follow the instructions here:
+https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html
 
 This project is set up like a standard Python project.  The initialization
 process also creates a virtualenv within this project, stored under the `.venv`
@@ -77,13 +80,17 @@ To add additional dependencies, for example other CDK libraries, just add
 them to your `setup.py` file and rerun the `pip install -r requirements.txt`
 command.
 
+5. If you need to bootstrap your CDK environment, do so now:
+
+```
+$ cdk bootstrap
+```
+  
 5. You can now deploy the CloudFormation template for this code. You will need to have valid AWS profile configured - see 
 
 ```
 $ cdk deploy
 ```
-Note that you will need a valid AWS cli profile. If you need to configure a profile, follow the instructions here:
-https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html
 
 6. To delete all resources provisoned use:
 
