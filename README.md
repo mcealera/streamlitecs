@@ -1,7 +1,21 @@
 
-# Welcome to your CDK Python project!
+This is a simple project showcasing Streamlint on ECS using CDK dployment with Python.
 
-This is a blank project for CDK development with Python.
+The Streamlit Dockerfile is located in the source directory. Create the Docker:
+
+```
+docker build -t streamlit .
+```
+
+You can test the container locally using:
+
+```
+docker run -p 80:80 streamlit
+```
+
+Push the image to a container repository. You can find a guide on how to create and push images to public ECR repository here:
+https://docs.aws.amazon.com/AmazonECR/latest/public/public-repository-create.html
+Update the container image repository URL on line 38 in `streamlitecs/streamlitecs_stack.py` 
 
 The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
@@ -47,6 +61,18 @@ To add additional dependencies, for example other CDK libraries, just add
 them to your `setup.py` file and rerun the `pip install -r requirements.txt`
 command.
 
+You can now deploy the CloudFormation template for this code.
+
+```
+$ cdk deploy
+```
+To delete all resources provisoned use:
+
+```
+$ cdk destroy
+```
+
+
 ## Useful commands
 
  * `cdk ls`          list all stacks in the app
@@ -55,4 +81,3 @@ command.
  * `cdk diff`        compare deployed stack with current state
  * `cdk docs`        open CDK documentation
 
-Enjoy!
