@@ -1,9 +1,11 @@
 
+## Streamlit on ECS 
+
 This is a simple project showcasing Streamlit on ECS using CDK dployment with Python.
 It contains the Dockerfile required to build the container image and the CDK code to deploy the code on AWS. 
 The CDK will create the ECS cluster, an Application Loadbalancer and a CloudFront distribution.
 
-##Create the Docker image and push it to a repository.
+### Create the Docker image and push it to a repository.
 
 1. You will need Docker enginer installed to create the image. See Docker installation guide here: https://docs.docker.com/engine/install/#server
 Ensure you have Docker engine installed by running the `hello-world` Docker image:
@@ -29,7 +31,7 @@ https://docs.aws.amazon.com/AmazonECR/latest/public/public-repository-create.htm
 
 4. Update the container image repository URL on line 38 in `streamlitecs/streamlitecs_stack.py` 
 
-##Prepare and run the CDK app
+### Prepare and run the CDK app
 
 The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
