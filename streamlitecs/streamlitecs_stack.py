@@ -28,6 +28,7 @@ class StreamlitecsStack(Stack):
 
         security_group.add_ingress_rule(
             ec2.Peer.prefix_list('pl-3b927c52'),  # Replace 'pl-xxxxxx' with your prefix list ID
+            ec2.Port.all_traffic(),
             "Allow CloudFront traffic"
         )
 
@@ -38,7 +39,7 @@ class StreamlitecsStack(Stack):
             task_image_options=ecs_patterns.ApplicationLoadBalancedTaskImageOptions(
                 image=ecs.ContainerImage.from_registry("public.ecr.aws/m2l6b1f0/streamlitecs:latest")),
             memory_limit_mib=2048,      # Default is 512
-            public_load_balancer=True)  # Default is True
+            public_load_balancer=False)  
         
         app.load_balancer.add_security_group(security_group)
 
