@@ -4,10 +4,11 @@
 Streamlit (https://streamlit.io/) provides a fast and easy way to build web apps and does not require front end development knowledge. Streamlit is a popular prototyping tool and is featured extensively in AWS Blog Articles, Labs, Workshops and Immersion Days. Most of these resources will run an ad-hoc instance of Streamlit - usually directly in the developer's IDE or Jupyter notebook. While this is great for learning and fast prototyping, it is not suitable for deploying a reliable Streamlit app.
 
 This is a simple project showcasing a Streamlit deployment on Amazon ECS using AWS CDK to provision the infrastructure resources. 
-It also provides instructions on packaging the default Streamlit 'hello-world' app as a container image.  
-The CDK will create the following resources:
+It also provides instructions on packaging the default Streamlit 'hello-world' app as a container image. The CDK will create the following resources:
 
 ![Architecture](streamlitecs.png)
+
+## Deployment steps
 
 ### 1. Create the Docker image and push it to a repository.
 
