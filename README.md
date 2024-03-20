@@ -7,18 +7,18 @@ This is a simple project showcasing a Streamlit deployment on Amazon ECS using A
 It also provides instructions on packaging the Streamlit app as a container image. Optionally, you can pull a public container image with the default Streamlit Hello World app.
 The CDK will create the Amazon ECS cluster, an Application Load Balancer (ALB) and an Amazon CloudFront distribution.
 
-### (Optional) Create the Docker image and push it to a repository.
+### (Optional) 1. Create the Docker image and push it to a repository.
 
 This step is optional. You can of course use your own container image and image repository or use the one pre-defined in the CDK file. Keep in mind the predefined repository may contain an outdated image. It's recommended that you build your own container image.
 
-1. You will need Docker engine. See Docker installation guide here: https://docs.docker.com/engine/install/#server
+1.1 You will need Docker engine. See Docker installation guide here: https://docs.docker.com/engine/install/#server
 Ensure you have Docker engine installed by running the `hello-world` Docker image:
 
 ```
 sudo docker run hello-world
 ```
 
-2. Navigate to the `streamlit` directory and build the Streamlit container image:
+1.2 Navigate to the `streamlit` directory and build the Streamlit container image:
 
 ```
 docker build -t streamlit .
@@ -30,12 +30,12 @@ You can test the container locally using:
 docker run -p 80:80 streamlit
 ```
 
-3. Push the image to a container repository. You can find a guide on how to create and push images to public ECR repository here:
+1.3 Push the image to a container repository. You can find a guide on how to create and push images to public ECR repository here:
 https://docs.aws.amazon.com/AmazonECR/latest/public/public-repository-create.html
 
-4. Update the container image repository URL on line 40 in `streamlitecs/streamlitecs_stack.py` 
+1.4 Update the container image repository URL on line 40 in `streamlitecs/streamlitecs_stack.py` 
 
-### Prepare and run the CDK app
+### 2. Prepare and run the CDK app
 
 You will need a valid AWS cli profile. If you need to configure a profile, follow the instructions here:
 https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html
@@ -47,17 +47,17 @@ directory.  To create the virtualenv it assumes that there is a `python3`
 package. If for any reason the automatic creation of the virtualenv fails,
 you can create the virtualenv manually.
 
-1. To manually create a virtualenv on MacOS and Linux, navigate to the projects root directory and run:
+2.1 To manually create a virtualenv on MacOS and Linux, navigate to the project's root directory and run:
 
 ```
-$ python3 -m venv .venv
+python3 -m venv .venv
 ```
 
-2. After the init process completes and the virtualenv is created, you can use the following
+2.2 After the init process completes and the virtualenv is created, you can use the following
 step to activate your virtualenv.
 
 ```
-$ source .venv/bin/activate
+source .venv/bin/activate
 ```
 
 If you are a Windows platform, you would activate the virtualenv like this:
@@ -66,38 +66,41 @@ If you are a Windows platform, you would activate the virtualenv like this:
 % .venv\Scripts\activate.bat
 ```
 
-3. Once the virtualenv is activated, you can install the required dependencies.
+2.3 Once the virtualenv is activated, you can install the required dependencies.
 
 ```
-$ pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
-4. At this point you can now synthesize the CloudFormation template for this code.
+2.4 At this point you can now synthesize the CloudFormation template for this code.
 
 ```
-$ cdk synth
+cdk synth
 ```
 
 To add additional dependencies, for example other CDK libraries, just add
 them to your `setup.py` file and rerun the `pip install -r requirements.txt`
 command.
 
-5. If you need to bootstrap your CDK environment, do so now:
+2.5 If you need to bootstrap your CDK environment, do so now:
 
 ```
-$ cdk bootstrap
+cdk bootstrap
 ```
   
-5. You can now deploy the CloudFormation template for this code. You will need to have valid AWS profile configured - see 
+2.6 Deploy: 
 
 ```
-$ cdk deploy
+cdk deploy
 ```
 
-6. To delete all resources provisoned use:
+The output of the deploy command will contain the CloudFront url where you can access the Streamlit app. It will look something like this:
+StreamlitecsStack.CFurl = https://<yourdistirbutionid>.cloudfront.net
+
+2.7 To delete all resources provisoned use:
 
 ```
-$ cdk destroy
+cdk destroy
 ```
 
 ## Useful commands

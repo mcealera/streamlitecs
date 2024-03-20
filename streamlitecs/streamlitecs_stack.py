@@ -28,7 +28,6 @@ class StreamlitecsStack(Stack):
 
         security_group.add_ingress_rule(
             ec2.Peer.prefix_list('pl-3b927c52'),  # Replace 'pl-xxxxxx' with your prefix list ID
-            ec2.Port.all_traffic(),
             "Allow CloudFront traffic"
         )
 
