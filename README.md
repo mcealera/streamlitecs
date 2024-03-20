@@ -9,9 +9,7 @@ The CDK will create the Amazon ECS cluster, an Application Load Balancer (ALB) a
 
 ![Architecture](streamlitecs.png)
 
-### (Optional) 1. Create the Docker image and push it to a repository.
-
-This step is optional. You can of course use your own container image and image repository or use the one pre-defined in the CDK file. Keep in mind the predefined repository may contain an outdated image. It's recommended that you build your own container image.
+### 1. Create the Docker image and push it to a repository.
 
 1.1 You will need Docker engine. See Docker installation guide here: https://docs.docker.com/engine/install/#server
 Ensure you have Docker engine installed by running the `hello-world` Docker image:
