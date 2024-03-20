@@ -1,12 +1,9 @@
 from aws_cdk import (
-    # Duration,
     Stack,
     CfnOutput,
     aws_ec2 as ec2, 
     aws_ecs as ecs,
     aws_cloudfront as cloudfront,
-    aws_route53 as route53,
-    aws_iam as iam,
     aws_ecs_patterns as ecs_patterns
 )
 from constructs import Construct
