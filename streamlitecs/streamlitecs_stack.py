@@ -34,7 +34,7 @@ class StreamlitecsStack(Stack):
             cpu=512,                    # Default is 256
             desired_count=2,            # Default is 1
             task_image_options=ecs_patterns.ApplicationLoadBalancedTaskImageOptions(
-                image=ecs.ContainerImage.from_registry("public.ecr.aws/m2l6b1f0/streamlitecs:latest")),
+                image=ecs.ContainerImage.from_registry("public.ecr.aws/m2l6b1f0/streamlitecs:latest")), # replace with your own image repe
             memory_limit_mib=2048,      # Default is 512
             public_load_balancer=False)  
         
