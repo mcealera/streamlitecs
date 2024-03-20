@@ -7,6 +7,8 @@ This is a simple project showcasing a Streamlit deployment on Amazon ECS using A
 It also provides instructions on packaging the Streamlit app as a container image. Optionally, you can pull a public container image with the default Streamlit Hello World app.
 The CDK will create the Amazon ECS cluster, an Application Load Balancer (ALB) and an Amazon CloudFront distribution.
 
+![Architecture](streamlitecs.png)
+
 ### (Optional) 1. Create the Docker image and push it to a repository.
 
 This step is optional. You can of course use your own container image and image repository or use the one pre-defined in the CDK file. Keep in mind the predefined repository may contain an outdated image. It's recommended that you build your own container image.

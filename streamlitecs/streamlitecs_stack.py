@@ -35,7 +35,7 @@ class StreamlitecsStack(Stack):
         app = ecs_patterns.ApplicationLoadBalancedFargateService(self, "MyFargateService",
             cluster=cluster,            # Required
             cpu=512,                    # Default is 256
-            desired_count=1,            # Default is 1
+            desired_count=2,            # Default is 1
             task_image_options=ecs_patterns.ApplicationLoadBalancedTaskImageOptions(
                 image=ecs.ContainerImage.from_registry("public.ecr.aws/m2l6b1f0/streamlitecs:latest")),
             memory_limit_mib=2048,      # Default is 512
