@@ -97,7 +97,7 @@ cdk deploy
 ```
 
 The output of the deploy command will contain the CloudFront url where you can access the Streamlit app. It will look something like this:
-StreamlitecsStack.CFurl = https://<yourdistirbutionid>.cloudfront.net
+StreamlitecsStack.CFurl = https://yourdistirbutionid.cloudfront.net
 
 The default 'Hello World' Streamlit app should look like this:
 
